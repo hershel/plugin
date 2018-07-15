@@ -4,6 +4,7 @@
   "description": "📁 Plugin helper for Hershel",
   "main": "dist/index.js",
   "scripts": {
+    "lint": "prettier ./**/*.{js,ts,json,md} -l",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +26,7 @@
     "hershel": "1.x.x"
   },
   "devDependencies": {
-    "hershel": "^1.0.2"
+    "hershel": "^1.0.2",
+    "prettier": "^1.13.7"
   }
 }
