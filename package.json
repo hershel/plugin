@@ -25,11 +25,11 @@
   },
   "homepage": "https://github.com/hershel/plugin#readme",
   "peerDependencies": {
-    "hershel": "1.x.x"
+    "hershel": ">= 1.0.3"
   },
   "devDependencies": {
     "@types/node": "^10.5.2",
-    "hershel": "^1.0.2",
+    "hershel": "^1.0.3",
     "prettier": "^1.13.7",
     "typescript": "^2.9.2"
   }
