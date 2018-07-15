@@ -1,0 +1,30 @@
+{
+  "name": "@hershel/plugin",
+  "version": "0.0.0-development",
+  "description": "📁 Plugin helper for Hershel",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hershel/plugin.git"
+  },
+  "keywords": [
+    "hershel",
+    "discord",
+    "bot"
+  ],
+  "author": "HelloEdit (https://github.com/HelloEdit)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hershel/plugin/issues"
+  },
+  "homepage": "https://github.com/hershel/plugin#readme",
+  "peerDependencies": {
+    "hershel": "1.x.x"
+  },
+  "devDependencies": {
+    "hershel": "^1.0.2"
+  }
+}
