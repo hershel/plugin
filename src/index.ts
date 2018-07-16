@@ -1,13 +1,15 @@
 import { Application as App, Client, version } from 'hershel'
 import * as semver from 'semver'
 
-const ssoSymbol = Symbol.for('skip-override')
+const skipOverride = Symbol.for('skip-override')
+const displayName = Symbol.for('hershel.display-name')
 
 type pluginFn = App.Plugin<any, Client>
 
 interface PluginHelperOptions {
   shouldSkipOverride?: boolean
   version?: string
+  name?: string
 }
 
 /**
@@ -26,8 +28,12 @@ export const plugin = (
   }
 
   // @ts-ignore because for TS, Symbol.for('a') !== Symbol.for('a')
-  if (options.shouldSkipOverride) fn[ssoSymbol] = true
+  if (options.shouldSkipOverride) fn[skipOverride] = true
   if (options.version) checkVersion(options.version)
+  if (!options.name) options.name = checkName(fn)
+
+  // @ts-ignore
+  fn[displayName] = options.name
 
   return fn
 }
@@ -56,4 +62,13 @@ function checkVersion(version: string) {
       `@hershel/plugin - expected '${version}' hershel version, '${pckgVersion}' is installed`
     )
   }
+}
+
+/**
+ * Try to retrieve the name of the plugin
+ * @param fn plugin function
+ */
+function checkName(fn: Function) {
+  if (fn.name.length > 0) return fn.name
+  else return 'anonymous'
 }
