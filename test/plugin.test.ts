@@ -23,3 +23,12 @@ test('when shouldSkipOverride is false, should not add sso symbol', t => {
 
   t.not(plugin[ssoSymbol], true)
 })
+
+test('should throw if plugin is not a function', t => {
+  const plugin = 'plugin'
+
+  // @ts-ignore
+  t.throws(() => p(plugin), {
+    message: 'plugin expects a function, instead got `string`'
+  })
+})
