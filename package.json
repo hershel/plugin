@@ -7,8 +7,9 @@
   "scripts": {
     "build": "tsc",
     "lint": "prettier ./**/*.{js,ts,json,md} -l",
-    "test": "npm run lint && ava",
-    "release": "semantic-release"
+    "test": "npm run lint && nyc ava",
+    "release": "semantic-release",
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -32,8 +33,10 @@
     "@types/node": "^10.5.2",
     "ava": "^1.0.0-beta.6",
     "hershel": "^1.0.3",
+    "nyc": "^12.0.2",
     "prettier": "^1.13.7",
     "semantic-release": "^15.7.1",
     "ts-node": "^7.0.0",
     "typescript": "^2.9.2"
-  } }
+  }
+}
