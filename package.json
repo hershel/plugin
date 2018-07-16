@@ -26,6 +26,9 @@
     "url": "https://github.com/hershel/plugin/issues"
   },
   "homepage": "https://github.com/hershel/plugin#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "hershel": ">= 1.0.3"
   },
