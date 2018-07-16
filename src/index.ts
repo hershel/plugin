@@ -1,15 +1,18 @@
 import { Application as App, Client, version } from 'hershel'
 import * as semver from 'semver'
 
-const skipOverride = Symbol.for('skip-override')
 const displayName = Symbol.for('hershel.display-name')
+const skipOverride = Symbol.for('skip-override')
+const meta = Symbol.for('plugin-metadata')
 
 type pluginFn = App.Plugin<any, Client>
 
 interface PluginHelperOptions {
   shouldSkipOverride?: boolean
-  version?: string
+  hershel?: string
   name?: string
+  /** allows to add custom metadata */
+  [key: string]: any
 }
 
 /**
@@ -27,13 +30,23 @@ export const plugin = (
     )
   }
 
-  // @ts-ignore because for TS, Symbol.for('a') !== Symbol.for('a')
-  if (options.shouldSkipOverride) fn[skipOverride] = true
-  if (options.version) checkVersion(options.version)
+  if (options.shouldSkipOverride) {
+    // @ts-ignore because for TS, Symbol.for('a') !== Symbol.for('a')
+    fn[skipOverride] = true
+    delete options.shouldSkipOverride
+  }
+
+  if (options.hershel) {
+    checkVersion(options.hershel)
+    delete options.hershel
+  }
+
   if (!options.name) options.name = checkName(fn)
 
   // @ts-ignore
   fn[displayName] = options.name
+  // @ts-ignore
+  fn[meta] = options
 
   return fn
 }

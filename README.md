@@ -24,7 +24,7 @@ npm i @hershel/plugin
 This module can do for you:
 
     Add the skip-override property
-    Check the minimum version of Fastify
+    Check the minimum version of Hershel
     Add plugin name
 
 ## Example
@@ -46,7 +46,7 @@ const myPlugin = (instance, opts, next) => {
   next()
 }
 
-plugin(myPlugin, { version: '1.x.x' })
+plugin(myPlugin, { hershel: '1.x.x' })
 ```
 
 By default, the plugin name will be the function name, or anonymous for anonymous function. If you want to override the name, just set `{ name: '' }` like this:
@@ -61,6 +61,8 @@ const myPlugin = (instance, opts, next) => {
 
 plugin(myPlugin, { name: 'myAwesomePlugin' })
 ```
+
+You can turn off adding skip-override hidden property with `{ shouldSkipOverride: false }`
 
 ## Related
 

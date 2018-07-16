@@ -9,7 +9,7 @@ test('should throw if version does not satisfies the plugin requested version', 
 
   const v = require('hershel/package.json').version.replace(/-rc\.\d+/, '')
 
-  t.throws(() => p(plugin, { version: '1000.1000.1000' }), {
+  t.throws(() => p(plugin, { hershel: '1000.1000.1000' }), {
     message: `@hershel/plugin - expected '1000.1000.1000' hershel version, '${v}' is installed`
   })
 })
@@ -20,7 +20,7 @@ test('should throw if version is not a string', t => {
   }
 
   // @ts-ignore
-  t.throws(() => p(plugin, { version: 1000 }), {
+  t.throws(() => p(plugin, { hershel: 1000 }), {
     message: `expect version string, got 'number'`
   })
 })
