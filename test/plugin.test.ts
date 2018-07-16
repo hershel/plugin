@@ -8,6 +8,14 @@ test('plugin is a function', t => {
   t.is(typeof p, 'function')
 })
 
+test('options should throw when not object', t => {
+  const plugin = () => {}
+  // @ts-ignore
+  t.throws(() => p(plugin, 'test'), {
+    message: 'options object should be an object'
+  })
+})
+
 test('add sso symbol to fn', t => {
   const plugin = () => {}
 

@@ -30,6 +30,14 @@ export const plugin = (
     )
   }
 
+  if (
+    typeof options !== 'object' ||
+    Array.isArray(options) ||
+    options === null
+  ) {
+    throw new TypeError('options object should be an object')
+  }
+
   if (options.shouldSkipOverride) {
     // @ts-ignore because for TS, Symbol.for('a') !== Symbol.for('a')
     fn[skipOverride] = true
