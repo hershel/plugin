@@ -20,7 +20,7 @@ interface PluginHelperOptions {
  * @param fn plugin function
  * @param options helper options
  */
-export const plugin = (
+export const plugin = <O>(
   fn: pluginFn,
   options: PluginHelperOptions = { shouldSkipOverride: true }
 ) => {
@@ -56,7 +56,7 @@ export const plugin = (
   // @ts-ignore
   fn[meta] = options
 
-  return fn
+  return fn as App.Plugin<O, Client>
 }
 
 /**
