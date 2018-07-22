@@ -5,7 +5,7 @@ const displayName = Symbol.for('hershel.display-name')
 const skipOverride = Symbol.for('skip-override')
 const meta = Symbol.for('plugin-metadata')
 
-type pluginFn = App.Plugin<any, Client>
+type pluginFn<O> = App.Plugin<O, Client>
 
 interface PluginHelperOptions {
   shouldSkipOverride?: boolean
@@ -21,7 +21,7 @@ interface PluginHelperOptions {
  * @param options helper options
  */
 export const plugin = <O>(
-  fn: pluginFn,
+  fn: pluginFn<O>,
   options: PluginHelperOptions = { shouldSkipOverride: true }
 ) => {
   if (typeof fn !== 'function') {
