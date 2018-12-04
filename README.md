@@ -13,6 +13,8 @@ In addition if you use this module when creating new plugins, you can declare th
 
 ## Install
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/hershel/plugin.svg)](https://greenkeeper.io/)
+
 ```
 npm i @hershel/plugin
 ```
